@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .path { stroke-dasharray: 1000; stroke-dashoffset: 1000; animation: dash 3s linear forwards; animation-iteration-count: 1;animation-delay: 1s;}
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.dashed{
+  stroke-dasharray: 5,5;
+  
+}
+#arrow{animation: arrow 2s linear forwards; opacity:0;}
+@keyframes arrow {
+  to {
+    opacity: 1;
+  }
+}
+.ifrm{border:none; width:90%;margin-top:50px;}
+    </style>
+</head>
+<body>
+    <div class="graph__wrapper">
+        <svg width="180px" height="100px" viewBox="0 0 315 107" version="1.1" style="overflow:visible">
+            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+                <path id="Path-1" class="path" fill="none" stroke="#19B39F" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="10" d="M1.4,2.1c0,0,86,57,211.5,41.5s172.5-24.5,289,81"/>
+                <path class="dashed" fill="none" stroke="white" stroke-width="0" stroke-linejoin="round" stroke-miterlimit="10" d="M1.4,2.1c0,0,86,57,211.5,41.5s172.5-24.5,289,81"/>   
+                
+
+                <polyline id="arrow" points="0,-9 18,0 0,9 5,0" fill="#19B39F" stroke="#19B39F" stroke-width="10">
+                    <animateMotion rotate="auto" begin="1s" dur="1.2s" repeatCount="1" fill="freeze">
+                      <mpath xlink:href="#Path-1" />
+                    </animateMotion>
+                  </polyline>
+                
+                
+                
+
+
+            </g>
+        </svg>
+    </div>
+    <script>
+        window.addEventListener('scroll', function() {
+            var scrollPosition = window.scrollY;
+            var container = document.querySelector('.graph__wrapper');
+            var arrowMotion = document.getElementById('motion');
+
+            var containerTop = container.getBoundingClientRect().top;
+            var windowHeight = window.innerHeight;
+
+            if (containerTop - windowHeight <= 0) {
+                arrowMotion.beginElement();
+            }
+        });
+    </script>
+      
+    
+</body>
+</html>
